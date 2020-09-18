@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import ShowData from './ShowData';
+import logo from './img/logo.png'
 
 function App() {
 
@@ -27,20 +28,33 @@ function App() {
 
   return (
     <div className="App">
-      <input type="text" onChange={searchUpdate}></input>
-      <button>Search</button>
+
+      <header className="center">
+        <img src={logo}></img>
+      </header>
+
+      <section className="search">
+        <form>
+          <input type="text" className="form-control" placeholder="Search Characters" autofocus onChange={searchUpdate}></input>
+        </form>
+
+      </section>
 
 
-      {character.map(char => (
-        <ShowData
-        name={char.name}
-        nickname={char.nickname}
-        status={char.status}
-        img={char.img}
-        birthday={char.birthday}
-        key={char.char_id}
-        />
-      ))}
+      <section className="cards">
+        {character.map(char => (
+          <ShowData
+            name={char.name}
+            nickname={char.nickname}
+            portrayed={char.portrayed}
+            status={char.status}
+            img={char.img}
+            birthday={char.birthday}
+            key={char.char_id}
+          />
+        ))}
+      </section>
+
 
 
     </div>
